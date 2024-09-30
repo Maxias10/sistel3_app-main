@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <style>
         /* Estilos para centrar el formulario en la página */
         body {
@@ -12,7 +12,8 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f2f2f2;
+            background-color: #e9ecef;
+            font-family: Arial, sans-serif;
         }
 
         form {
@@ -22,17 +23,8 @@
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .imgcontainer {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .avatar {
-            width: 100px;
-            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
         }
 
         .container {
@@ -54,10 +46,17 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+        }
+
+        .container input[type="text"]:focus,
+        .container input[type="password"]:focus {
+            background-color: #e0f0ff;
         }
 
         .container button {
-            background-color: #4CAF50;
+            background-color: #4169E1; /* RoyalBlue */
             color: white;
             padding: 14px 20px;
             margin: 8px 0;
@@ -65,23 +64,16 @@
             cursor: pointer;
             width: 100%;
             border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
 
         .container button:hover {
-            opacity: 0.8;
-        }
-
-        .cancelbtn {
-            background-color: #f44336;
+            background-color: #6BB8E5; /* Slightly lighter shade on hover */
         }
 
         .psw {
             float: right;
             padding-top: 16px;
-        }
-
-        .container label {
-            margin-bottom: 8px;
         }
 
         .container .remember-me {
@@ -94,40 +86,86 @@
             margin-right: 10px;
         }
 
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-size: 14px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+
         @media screen and (max-width: 300px) {
             .psw {
-               display: block;
-               float: none;
+                display: block;
+                float: none;
             }
             .cancelbtn {
-               width: 100%;
+                width: 100%;
             }
+        }
+
+        /* Animación para un efecto de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <!--Login-->
-    <form action="action_page.php" method="post">
-        <div class="imgcontainer">
-            <a href="/index">Atras</a>
-        </div>
-
+    <form action="action_page.php" method="post" onsubmit="return validateForm()">
         <div class="container">
             <label for="uname"><b>Usuario</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input type="text" placeholder="Introduce el nombre de usuario" id="uname" name="uname" required>
 
             <label for="psw"><b>Contraseña</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Introduce la contraseña" id="psw" name="psw" required>
 
             <button type="submit">Login</button>
 
             <div class="remember-me">
                 <input type="checkbox" checked="checked" name="remember">
-                <label>Recuerdame</label>
+                <label>Recuérdame</label>
             </div>
+
+            <div class="error" id="error-msg"></div>
         </div>
 
-        
+        <div class="links">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <a href="#">Regístrate</a>
+        </div>
     </form>
+
+    <script>
+        function validateForm() {
+            const username = document.getElementById('uname').value;
+            const password = document.getElementById('psw').value;
+            const errorMsg = document.getElementById('error-msg');
+
+            // Validación simple de longitud
+            if (username.length < 4) {
+                errorMsg.textContent = 'El nombre de usuario debe tener al menos 4 caracteres';
+                return false;
+            }
+
+            if (password.length < 6) {
+                errorMsg.textContent = 'La contraseña debe tener al menos 6 caracteres';
+                return false;
+            }
+
+            return true;  // Si pasa las validaciones, se envía el formulario
+        }
+    </script>
 </body>
 </html>
