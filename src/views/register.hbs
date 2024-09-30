@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Página de Inicio</title>
     <style>
-        /* Estilos para centrar el formulario en la página */
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -16,152 +16,36 @@
             font-family: Arial, sans-serif;
         }
 
-        form {
-            border: 3px solid #f1f1f1;
-            width: 100%;
-            max-width: 400px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease-in-out;
+        h1 {
+            margin-bottom: 20px;
         }
 
-        .container {
-            padding: 16px;
-        }
-
-        .container label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .container input[type="text"],
-        .container input[type="password"],
-        .container input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-            transition: background-color 0.3s ease;
-        }
-
-        .container input[type="text"]:focus,
-        .container input[type="password"]:focus,
-        .container input[type="email"]:focus {
-            background-color: #e0f0ff;
-        }
-
-        .container button {
-            background-color: #4169E1;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .container button:hover {
-            background-color: #218838;
-        }
-
-        .container .remember-me {
+        .links {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-top: 16px;
         }
 
-        .remember-me input {
-            margin-right: 10px;
+        .links a {
+            margin: 10px;
+            padding: 12px 20px;
+            background-color: #4169E1; /* RoyalBlue */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
 
-        .error {
-            color: red;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        @media screen and (max-width: 300px) {
-            .psw {
-                display: block;
-                float: none;
-            }
-            .cancelbtn {
-                width: 100%;
-            }
-        }
-
-        /* Animación para un efecto de entrada */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .links a:hover {
+            background-color: #6BB8E5; /* Slightly lighter shade on hover */
         }
     </style>
 </head>
 <body>
-    <!--Register-->
-    <form action="register_page.php" method="post" onsubmit="return validateRegisterForm()">
-        <div class="container">
-            <label for="uname"><b>Usuario</b></label>
-            <input type="text" placeholder="Introduce el nombre de usuario" id="uname" name="uname" required>
-
-            <label for="email"><b>Email</b></label>
-            <input type="email" placeholder="Introduce tu email" id="email" name="email" required>
-
-            <label for="psw"><b>Contraseña</b></label>
-            <input type="password" placeholder="Introduce la contraseña" id="psw" name="psw" required>
-
-            <label for="psw-repeat"><b>Repite la contraseña</b></label>
-            <input type="password" placeholder="Repite la contraseña" id="psw-repeat" name="psw-repeat" required>
-
-            <button type="submit">Registrarse</button>
-
-            <div class="error" id="error-msg"></div>
-        </div>
-    </form>
-
-    <script>
-        function validateRegisterForm() {
-            const username = document.getElementById('uname').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('psw').value;
-            const passwordRepeat = document.getElementById('psw-repeat').value;
-            const errorMsg = document.getElementById('error-msg');
-
-            // Validación simple de longitud
-            if (username.length < 4) {
-                errorMsg.textContent = 'El nombre de usuario debe tener al menos 4 caracteres';
-                return false;
-            }
-
-            if (password.length < 6) {
-                errorMsg.textContent = 'La contraseña debe tener al menos 6 caracteres';
-                return false;
-            }
-
-            // Validación de coincidencia de contraseñas
-            if (password !== passwordRepeat) {
-                errorMsg.textContent = 'Las contraseñas no coinciden';
-                return false;
-            }
-
-            // Validación básica de email
-            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-            if (!email.match(emailPattern)) {
-                errorMsg.textContent = 'Introduce un email válido';
-                return false;
-            }
-
-            return true;  // Si pasa las validaciones, se envía el formulario
-        }
-    </script>
+    <h1>Bienvenido a Nuestra Página</h1>
+    <div class="links">
+        <a href="login.html">Iniciar Sesión</a>
+        <a href="register.html">Registrarse</a>
+    </div>
 </body>
 </html>
