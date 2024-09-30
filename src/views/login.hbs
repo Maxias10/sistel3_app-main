@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Iniciar Sesión</title>
     <style>
-        /* Estilos para centrar el formulario en la página */
         body {
             display: flex;
             justify-content: center;
@@ -71,21 +70,6 @@
             background-color: #6BB8E5; /* Slightly lighter shade on hover */
         }
 
-        .psw {
-            float: right;
-            padding-top: 16px;
-        }
-
-        .container .remember-me {
-            display: flex;
-            align-items: center;
-            margin-top: 16px;
-        }
-
-        .remember-me input {
-            margin-right: 10px;
-        }
-
         .links {
             display: flex;
             justify-content: space-between;
@@ -104,17 +88,6 @@
             text-align: center;
         }
 
-        @media screen and (max-width: 300px) {
-            .psw {
-                display: block;
-                float: none;
-            }
-            .cancelbtn {
-                width: 100%;
-            }
-        }
-
-        /* Animación para un efecto de entrada */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -122,7 +95,6 @@
     </style>
 </head>
 <body>
-    <!--Login-->
     <form action="action_page.php" method="post" onsubmit="return validateForm()">
         <div class="container">
             <label for="uname"><b>Usuario</b></label>
@@ -131,19 +103,14 @@
             <label for="psw"><b>Contraseña</b></label>
             <input type="password" placeholder="Introduce la contraseña" id="psw" name="psw" required>
 
-            <button type="submit">Login</button>
+            <button type="submit">Iniciar Sesión</button>
 
-            <div class="remember-me">
-                <input type="checkbox" checked="checked" name="remember">
-                <label>Recuérdame</label>
+            <div class="links">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <a href="register.html">Regístrate</a>
             </div>
 
             <div class="error" id="error-msg"></div>
-        </div>
-
-        <div class="links">
-            <a href="#">¿Olvidaste tu contraseña?</a>
-            <a href="#">Regístrate</a>
         </div>
     </form>
 
@@ -153,7 +120,6 @@
             const password = document.getElementById('psw').value;
             const errorMsg = document.getElementById('error-msg');
 
-            // Validación simple de longitud
             if (username.length < 4) {
                 errorMsg.textContent = 'El nombre de usuario debe tener al menos 4 caracteres';
                 return false;
@@ -164,7 +130,7 @@
                 return false;
             }
 
-            return true;  // Si pasa las validaciones, se envía el formulario
+            return true;
         }
     </script>
 </body>
